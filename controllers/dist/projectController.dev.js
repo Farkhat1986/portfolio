@@ -1,0 +1,77 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.projectController = void 0;
+
+var _model = require("../model/model.js");
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ProjectController =
+/*#__PURE__*/
+function () {
+  function ProjectController() {
+    _classCallCheck(this, ProjectController);
+  }
+
+  _createClass(ProjectController, [{
+    key: "create",
+    value: function create(req, res) {
+      var name, project;
+      return regeneratorRuntime.async(function create$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              name = req.body.name;
+              _context.next = 3;
+              return regeneratorRuntime.awrap(_model.Project.create({
+                name: name
+              }));
+
+            case 3:
+              project = _context.sent;
+              return _context.abrupt("return", res.json(project));
+
+            case 5:
+            case "end":
+              return _context.stop();
+          }
+        }
+      });
+    }
+  }, {
+    key: "getAll",
+    value: function getAll(req, res) {
+      var projectList;
+      return regeneratorRuntime.async(function getAll$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return regeneratorRuntime.awrap(_model.Project.findAll());
+
+            case 2:
+              projectList = _context2.sent;
+              return _context2.abrupt("return", res.json(projectList));
+
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      });
+    }
+  }]);
+
+  return ProjectController;
+}();
+
+var projectController = new ProjectController();
+exports.projectController = projectController;
+//# sourceMappingURL=projectController.dev.js.map
